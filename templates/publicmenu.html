@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="pane">
+  <div class="header">
+    <a href="{{url_for('showRestaurants')}}">Return to restaurant list</a>
+    <h1>{{ restaurant.name }}</h1>
+    <div class="creator">
+      <div class="author">
+        Menu by: {{creator.name}} 
+      </div>
+      <img src="{{creator.picture}}" class="portrait">
+    </div>
+  </div>
+
+  {% for i in items %}
+  <div class="nameAndPrice">
+    <span class="name"><p>{{i.name}}</p></span>
+    <span class="price"><p>{{i.price}}</p></span>
+  </div>
+
+  <div class="description">
+    <p>{{i.description}}</p>
+  </div>
+  {% endfor %}
+  {% if not items %}
+  <p>There are no menu items!</p>
+  {% endif %}
+</div>
+{% endblock %}
